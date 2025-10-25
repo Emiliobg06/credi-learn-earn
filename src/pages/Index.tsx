@@ -4,12 +4,12 @@ import { ScoreCard } from "@/components/ScoreCard";
 import { TokenBalance } from "@/components/TokenBalance";
 import { TransactionList } from "@/components/TransactionList";
 import { BadgesSection } from "@/components/BadgesSection";
-import { AIRecommendations } from "@/components/AIRecommendations";
+
 import { TransactionDialog } from "@/components/TransactionDialog";
 import { LocalMarketplace } from "@/components/LocalMarketplace";
 import { CryptoEducation } from "@/components/CryptoEducation";
 import { useToast } from "@/hooks/use-toast";
-import type { Transaction, Badge, AIRecommendation, UserStats, LocalBenefit, CryptoLesson } from "@/types";
+import type { Transaction, Badge, UserStats, LocalBenefit, CryptoLesson } from "@/types";
 
 const Index = () => {
   const { toast } = useToast();
@@ -223,32 +223,6 @@ const Index = () => {
     }
   ]);
 
-  const recommendations: AIRecommendation[] = [
-    {
-      id: '1',
-      title: 'Formaliza más transacciones',
-      description: 'Tienes 5 transacciones formales. Al llegar a 10, desbloquearás el cupón de CoWork Crypto con 20% de descuento.',
-      priority: 'high',
-      category: 'Formalización',
-      potentialImpact: 20
-    },
-    {
-      id: '2',
-      title: 'Reduce gastos en entretenimiento',
-      description: 'Has gastado 20% más que el mes pasado en entretenimiento. Reducir $100 este mes podría mejorar tu score.',
-      priority: 'medium',
-      category: 'Gastos',
-      potentialImpact: 15
-    },
-    {
-      id: '3',
-      title: 'Completa lecciones de cripto',
-      description: 'Completa 3 lecciones más para ganar 750 CrediTokens adicionales.',
-      priority: 'medium',
-      category: 'Educación',
-      potentialImpact: 10
-    }
-  ];
 
   const handleAddTransaction = (newTransaction: Omit<Transaction, 'id' | 'date'>) => {
     const transaction: Transaction = {
@@ -350,8 +324,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2 mb-6">
-          <AIRecommendations recommendations={recommendations} />
+        <div className="mb-6">
           <BadgesSection badges={badges} />
         </div>
 
