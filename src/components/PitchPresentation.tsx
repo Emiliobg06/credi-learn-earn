@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from 'react-router-dom';
 import {
   TrendingUp,
   Users,
@@ -99,6 +100,7 @@ const problemSolutionMatrix = [
 
 export const PitchPresentation = () => {
   const [selectedIncentive, setSelectedIncentive] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full max-w-7xl mx-auto p-6 space-y-8">
@@ -509,7 +511,7 @@ export const PitchPresentation = () => {
             </p>
           </div>
           <div className="flex justify-center gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg px-8">
+            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg px-8" onClick={() => navigate('/demo')}>
               Ver Demo en Vivo
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
