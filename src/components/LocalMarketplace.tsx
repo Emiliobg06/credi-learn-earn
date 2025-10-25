@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Lock, CheckCircle2 } from "lucide-react";
+import { MapPin, Lock, CheckCircle2, Coffee, Briefcase, GraduationCap, UtensilsCrossed } from "lucide-react";
 import type { LocalBenefit } from "@/types";
 
 interface LocalMarketplaceProps {
@@ -13,13 +13,23 @@ interface LocalMarketplaceProps {
 export const LocalMarketplace = ({ benefits, formalTransactions, onClaimBenefit }: LocalMarketplaceProps) => {
   const getCategoryColor = (category: string) => {
     const colors = {
-      cafe: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
-      coworking: 'bg-blue-500/10 text-blue-600 border-blue-500/20',
-      taller: 'bg-purple-500/10 text-purple-600 border-purple-500/20',
-      restaurante: 'bg-green-500/10 text-green-600 border-green-500/20',
-      servicios: 'bg-pink-500/10 text-pink-600 border-pink-500/20'
+      cafe: 'bg-secondary text-secondary-foreground border-border',
+      coworking: 'bg-accent/10 text-accent border-accent/20',
+      taller: 'bg-primary/10 text-primary border-primary/20',
+      restaurante: 'bg-secondary text-secondary-foreground border-border',
+      servicios: 'bg-accent/10 text-accent border-accent/20'
     };
     return colors[category as keyof typeof colors] || colors.cafe;
+  };
+
+  const getIcon = (category: string) => {
+    const icons: Record<string, JSX.Element> = {
+      'cafe': <Coffee className="h-8 w-8" />,
+      'coworking': <Briefcase className="h-8 w-8" />,
+      'taller': <GraduationCap className="h-8 w-8" />,
+      'restaurante': <UtensilsCrossed className="h-8 w-8" />
+    };
+    return icons[category] || <Coffee className="h-8 w-8" />;
   };
 
   return (
@@ -50,7 +60,7 @@ export const LocalMarketplace = ({ benefits, formalTransactions, onClaimBenefit 
             }`}
           >
             <div className="flex items-start gap-3">
-              <div className="text-3xl">{benefit.icon}</div>
+              <div className="text-primary">{getIcon(benefit.category)}</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2">
                   <h3 className="font-semibold text-foreground truncate">

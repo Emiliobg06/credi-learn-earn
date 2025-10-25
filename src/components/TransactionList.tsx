@@ -12,7 +12,7 @@ export const TransactionList = ({ transactions, onAddTransaction }: TransactionL
   const getIcon = (type: Transaction['type']) => {
     switch (type) {
       case 'income':
-        return <ArrowDownRight className="h-4 w-4 text-success" />;
+        return <ArrowDownRight className="h-4 w-4 text-accent" />;
       case 'expense':
         return <ArrowUpRight className="h-4 w-4 text-destructive" />;
       case 'saving':
@@ -47,7 +47,7 @@ export const TransactionList = ({ transactions, onAddTransaction }: TransactionL
             </div>
             
             <div className="text-right">
-              <p className={`font-semibold ${transaction.type === 'income' ? 'text-success' : transaction.type === 'expense' ? 'text-destructive' : 'text-primary'}`}>
+              <p className={`font-semibold ${transaction.type === 'income' ? 'text-accent' : transaction.type === 'expense' ? 'text-destructive' : 'text-primary'}`}>
                 {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toLocaleString()}
               </p>
               <p className="text-xs text-muted-foreground">

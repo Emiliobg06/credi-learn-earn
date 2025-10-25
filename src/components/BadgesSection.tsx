@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Award, Lock, CheckCircle } from "lucide-react";
+import { Award, Lock, CheckCircle, Target, PiggyBank, Dumbbell, TrendingUp, Crown, Star } from "lucide-react";
 import type { Badge } from "@/types";
 
 interface BadgesSectionProps {
@@ -8,6 +8,18 @@ interface BadgesSectionProps {
 
 export const BadgesSection = ({ badges }: BadgesSectionProps) => {
   const unlockedCount = badges.filter(b => b.unlocked).length;
+
+  const getIcon = (badgeId: string) => {
+    const icons: Record<string, JSX.Element> = {
+      '1': <Target className="h-8 w-8" />,
+      '2': <PiggyBank className="h-8 w-8" />,
+      '3': <Dumbbell className="h-8 w-8" />,
+      '4': <TrendingUp className="h-8 w-8" />,
+      '5': <Crown className="h-8 w-8" />,
+      '6': <Star className="h-8 w-8" />
+    };
+    return icons[badgeId] || <Award className="h-8 w-8" />;
+  };
 
   return (
     <Card className="p-6 bg-gradient-card shadow-lg border-border">
@@ -31,11 +43,11 @@ export const BadgesSection = ({ badges }: BadgesSectionProps) => {
           >
             <div className="flex flex-col items-center text-center space-y-2">
               <div className="relative">
-                <div className={`text-4xl ${badge.unlocked ? 'scale-100' : 'scale-90 grayscale'} transition-all`}>
-                  {badge.icon}
+                <div className={`${badge.unlocked ? 'text-accent scale-100' : 'text-muted scale-90 grayscale'} transition-all`}>
+                  {getIcon(badge.id)}
                 </div>
                 {badge.unlocked ? (
-                  <CheckCircle className="h-4 w-4 text-success absolute -top-1 -right-1" />
+                  <CheckCircle className="h-4 w-4 text-accent absolute -top-1 -right-1" />
                 ) : (
                   <Lock className="h-4 w-4 text-muted-foreground absolute -top-1 -right-1" />
                 )}

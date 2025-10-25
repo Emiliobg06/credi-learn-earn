@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { BookOpen, Clock, CheckCircle2, Coins } from "lucide-react";
+import { BookOpen, Clock, CheckCircle2, Coins, Link2, Wallet, FileText, Building2, BarChart3 } from "lucide-react";
 import type { CryptoLesson } from "@/types";
 
 interface CryptoEducationProps {
@@ -16,11 +16,22 @@ export const CryptoEducation = ({ lessons, onStartLesson }: CryptoEducationProps
 
   const getDifficultyColor = (difficulty: string) => {
     const colors = {
-      beginner: 'bg-green-500/10 text-green-600 border-green-500/20',
-      intermediate: 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20',
-      advanced: 'bg-red-500/10 text-red-600 border-red-500/20'
+      beginner: 'bg-accent/10 text-accent border-accent/20',
+      intermediate: 'bg-primary/10 text-primary border-primary/20',
+      advanced: 'bg-destructive/10 text-destructive border-destructive/20'
     };
     return colors[difficulty as keyof typeof colors] || colors.beginner;
+  };
+
+  const getIcon = (lessonId: string) => {
+    const icons: Record<string, JSX.Element> = {
+      '1': <Link2 className="h-6 w-6" />,
+      '2': <Wallet className="h-6 w-6" />,
+      '3': <FileText className="h-6 w-6" />,
+      '4': <Building2 className="h-6 w-6" />,
+      '5': <BarChart3 className="h-6 w-6" />
+    };
+    return icons[lessonId] || <BookOpen className="h-6 w-6" />;
   };
 
   return (
@@ -51,7 +62,7 @@ export const CryptoEducation = ({ lessons, onStartLesson }: CryptoEducationProps
             }`}
           >
             <div className="flex items-start gap-3">
-              <div className="text-2xl">{lesson.icon}</div>
+              <div className="text-primary">{getIcon(lesson.id)}</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="font-semibold text-foreground">

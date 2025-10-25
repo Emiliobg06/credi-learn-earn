@@ -8,14 +8,14 @@ interface ScoreCardProps {
 
 export const ScoreCard = ({ score, change }: ScoreCardProps) => {
   const isPositive = change >= 0;
-  const scoreColor = score >= 700 ? "text-success" : score >= 600 ? "text-warning" : "text-destructive";
+  const scoreColor = score >= 700 ? "text-accent" : score >= 600 ? "text-primary" : "text-destructive";
   
   return (
     <Card className="p-6 bg-gradient-card shadow-lg border-border">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-medium text-muted-foreground">Score Financiero</h3>
-          <div className={`flex items-center gap-1 text-sm ${isPositive ? 'text-success' : 'text-destructive'}`}>
+          <div className={`flex items-center gap-1 text-sm ${isPositive ? 'text-accent' : 'text-destructive'}`}>
             {isPositive ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
             <span className="font-medium">{isPositive ? '+' : ''}{change}</span>
           </div>
@@ -27,7 +27,7 @@ export const ScoreCard = ({ score, change }: ScoreCardProps) => {
           </div>
           <div className="w-full bg-secondary rounded-full h-3 overflow-hidden">
             <div 
-              className={`h-full transition-all duration-500 ${score >= 700 ? 'bg-success' : score >= 600 ? 'bg-warning' : 'bg-destructive'}`}
+              className={`h-full transition-all duration-500 ${score >= 700 ? 'bg-accent' : score >= 600 ? 'bg-primary' : 'bg-destructive'}`}
               style={{ width: `${(score / 850) * 100}%` }}
             />
           </div>

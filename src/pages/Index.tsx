@@ -77,7 +77,7 @@ const Index = () => {
       id: '1',
       name: 'Primer Paso',
       description: 'Primera transacción',
-      icon: '🎯',
+      icon: '',
       unlocked: true,
       requirement: '1 transacción'
     },
@@ -85,7 +85,7 @@ const Index = () => {
       id: '2',
       name: 'Ahorrador',
       description: 'Ahorra 3 meses seguidos',
-      icon: '🐷',
+      icon: '',
       unlocked: true,
       requirement: '3 meses ahorrando'
     },
@@ -93,7 +93,7 @@ const Index = () => {
       id: '3',
       name: 'Disciplinado',
       description: '30 días sin gastos impulsivos',
-      icon: '💪',
+      icon: '',
       unlocked: false,
       requirement: '30 días consecutivos'
     },
@@ -101,7 +101,7 @@ const Index = () => {
       id: '4',
       name: 'Inversionista',
       description: 'Primera inversión',
-      icon: '📈',
+      icon: '',
       unlocked: false,
       requirement: 'Realizar 1 inversión'
     },
@@ -109,7 +109,7 @@ const Index = () => {
       id: '5',
       name: 'Maestro',
       description: 'Score mayor a 750',
-      icon: '👑',
+      icon: '',
       unlocked: false,
       requirement: 'Score 750+'
     },
@@ -117,7 +117,7 @@ const Index = () => {
       id: '6',
       name: 'Consistente',
       description: '100 transacciones',
-      icon: '⭐',
+      icon: '',
       unlocked: false,
       requirement: '100 transacciones'
     }
@@ -130,7 +130,7 @@ const Index = () => {
       category: 'cafe',
       discount: 15,
       description: 'Descuento en café y snacks. Ambiente perfecto para trabajar.',
-      icon: '☕',
+      icon: '',
       requiredFormalTransactions: 3,
       unlocked: true,
       location: 'Centro, Calle Principal 123'
@@ -141,7 +141,7 @@ const Index = () => {
       category: 'coworking',
       discount: 20,
       description: 'Espacio de coworking con internet de alta velocidad.',
-      icon: '💼',
+      icon: '',
       requiredFormalTransactions: 10,
       unlocked: false,
       location: 'Zona Financiera, Av. Innovación 456'
@@ -152,7 +152,7 @@ const Index = () => {
       category: 'taller',
       discount: 25,
       description: 'Talleres presenciales de finanzas descentralizadas.',
-      icon: '🎓',
+      icon: '',
       requiredFormalTransactions: 5,
       unlocked: true,
       location: 'Universidad Tecnológica, Campus Norte'
@@ -163,7 +163,7 @@ const Index = () => {
       category: 'restaurante',
       discount: 10,
       description: 'Comida saludable con pago en cripto aceptado.',
-      icon: '🍽️',
+      icon: '',
       requiredFormalTransactions: 7,
       unlocked: false,
       location: 'Plaza Comercial, Local 789'
@@ -179,7 +179,7 @@ const Index = () => {
       duration: 15,
       completed: true,
       rewardTokens: 100,
-      icon: '🔗'
+      icon: ''
     },
     {
       id: '2',
@@ -189,7 +189,7 @@ const Index = () => {
       duration: 20,
       completed: true,
       rewardTokens: 150,
-      icon: '👛'
+      icon: ''
     },
     {
       id: '3',
@@ -199,7 +199,7 @@ const Index = () => {
       duration: 30,
       completed: false,
       rewardTokens: 200,
-      icon: '📄'
+      icon: ''
     },
     {
       id: '4',
@@ -209,7 +209,7 @@ const Index = () => {
       duration: 25,
       completed: false,
       rewardTokens: 250,
-      icon: '🏦'
+      icon: ''
     },
     {
       id: '5',
@@ -219,7 +219,7 @@ const Index = () => {
       duration: 45,
       completed: false,
       rewardTokens: 300,
-      icon: '📊'
+      icon: ''
     }
   ]);
 
