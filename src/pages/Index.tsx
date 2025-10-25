@@ -10,20 +10,22 @@ import { TransactionDialog } from "@/components/TransactionDialog";
 import { LocalMarketplace } from "@/components/LocalMarketplace";
 import { CryptoEducation } from "@/components/CryptoEducation";
 import { useToast } from "@/hooks/use-toast";
+import BronzeChecklistDialog from "@/components/BronzeChecklistDialog";
 import type { Transaction, Badge, UserStats, LocalBenefit, CryptoLesson } from "@/types";
 
 const Index = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = useState(false);
-  
+  const [bronzeOpen, setBronzeOpen] = useState(false);
+
   const [stats, setStats] = useState<UserStats>({
     creditScore: 685,
     crediTokens: 2450,
     totalTransactions: 87,
     savingsRate: 15,
     monthlyProgress: 12,
-    formalTransactions: 5
+    formalTransactions: 5 // pon 12 para probar que Bronce abre de inmediato
   });
 
   const [transactions, setTransactions] = useState<Transaction[]>([
@@ -75,54 +77,12 @@ const Index = () => {
   ]);
 
   const badges: Badge[] = [
-    {
-      id: '1',
-      name: 'Primer Paso',
-      description: 'Primera transacción',
-      icon: '',
-      unlocked: true,
-      requirement: '1 transacción'
-    },
-    {
-      id: '2',
-      name: 'Ahorrador',
-      description: 'Ahorra 3 meses seguidos',
-      icon: '',
-      unlocked: true,
-      requirement: '3 meses ahorrando'
-    },
-    {
-      id: '3',
-      name: 'Disciplinado',
-      description: '30 días sin gastos impulsivos',
-      icon: '',
-      unlocked: false,
-      requirement: '30 días consecutivos'
-    },
-    {
-      id: '4',
-      name: 'Inversionista',
-      description: 'Primera inversión',
-      icon: '',
-      unlocked: false,
-      requirement: 'Realizar 1 inversión'
-    },
-    {
-      id: '5',
-      name: 'Maestro',
-      description: 'Score mayor a 750',
-      icon: '',
-      unlocked: false,
-      requirement: 'Score 750+'
-    },
-    {
-      id: '6',
-      name: 'Consistente',
-      description: '100 transacciones',
-      icon: '',
-      unlocked: false,
-      requirement: '100 transacciones'
-    }
+    { id: '1', name: 'Primer Paso',    description: 'Primera transacción',         icon: '', unlocked: true,  requirement: '1 transacción' },
+    { id: '2', name: 'Ahorrador',      description: 'Ahorra 3 meses seguidos',     icon: '', unlocked: true,  requirement: '3 meses ahorrando' },
+    { id: '3', name: 'Disciplinado',   description: '30 días sin gastos impulsivos',icon: '', unlocked: false, requirement: '30 días consecutivos' },
+    { id: '4', name: 'Inversionista',  description: 'Primera inversión',           icon: '', unlocked: false, requirement: 'Realizar 1 inversión' },
+    { id: '5', name: 'Maestro',        description: 'Score mayor a 750',           icon: '', unlocked: false, requirement: 'Score 750+' },
+    { id: '6', name: 'Consistente',    description: '100 transacciones',           icon: '', unlocked: false, requirement: '100 transacciones' },
   ];
 
   const [localBenefits, setLocalBenefits] = useState<LocalBenefit[]>([
@@ -225,7 +185,6 @@ const Index = () => {
     }
   ]);
 
-
   const handleAddTransaction = (newTransaction: Omit<Transaction, 'id' | 'date'>) => {
     const transaction: Transaction = {
       ...newTransaction,
@@ -233,30 +192,29 @@ const Index = () => {
       date: new Date()
     };
 
-    setTransactions([transaction, ...transactions]);
-    
-    // Simulate score change and token reward
+    setTransactions(prev => [transaction, ...prev]);
+
     const isFormal = transaction.type === 'income' || transaction.type === 'saving';
-    const scoreChange = transaction.type === 'saving' ? 5 : 
-                       transaction.type === 'income' ? 3 : -2;
-    const tokenReward = transaction.type === 'saving' ? 50 : 
-                       transaction.type === 'income' ? 20 : 10;
-    
-    const newFormalCount = isFormal ? stats.formalTransactions + 1 : stats.formalTransactions;
+    const scoreChange = transaction.type === 'saving' ? 5 : transaction.type === 'income' ? 3 : -2;
+    const tokenReward = transaction.type === 'saving' ? 50 : transaction.type === 'income' ? 20 : 10;
 
-    setStats(prev => ({
-      ...prev,
-      creditScore: Math.min(850, Math.max(300, prev.creditScore + scoreChange)),
-      crediTokens: prev.crediTokens + tokenReward,
-      totalTransactions: prev.totalTransactions + 1,
-      formalTransactions: newFormalCount
-    }));
+    setStats(prev => {
+      const newFormalCount = isFormal ? prev.formalTransactions + 1 : prev.formalTransactions;
 
-    // Unlock benefits based on formal transactions
-    setLocalBenefits(prev => prev.map(benefit => ({
-      ...benefit,
-      unlocked: benefit.unlocked || newFormalCount >= benefit.requiredFormalTransactions
-    })));
+      // Desbloqueos dependientes del nuevo conteo
+      setLocalBenefits(bPrev => bPrev.map(benefit => ({
+        ...benefit,
+        unlocked: benefit.unlocked || newFormalCount >= benefit.requiredFormalTransactions
+      })));
+
+      return {
+        ...prev,
+        creditScore: Math.min(850, Math.max(300, prev.creditScore + scoreChange)),
+        crediTokens: prev.crediTokens + tokenReward,
+        totalTransactions: prev.totalTransactions + 1,
+        formalTransactions: newFormalCount
+      };
+    });
 
     toast({
       title: "¡Transacción agregada!",
@@ -275,10 +233,10 @@ const Index = () => {
   };
 
   const handleStartLesson = (lessonId: string) => {
-    setCryptoLessons(prev => prev.map(lesson => 
+    setCryptoLessons(prev => prev.map(lesson =>
       lesson.id === lessonId ? { ...lesson, completed: true } : lesson
     ));
-    
+
     const lesson = cryptoLessons.find(l => l.id === lessonId);
     if (lesson) {
       setStats(prev => ({
@@ -325,11 +283,19 @@ const Index = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
-          <ScoreCard score={stats.creditScore} change={stats.monthlyProgress} />
+          <ScoreCard
+            score={stats.creditScore}
+            change={stats.monthlyProgress}
+            formalTransactions={stats.formalTransactions}
+            onLevelClick={(levelId) => {
+              if (levelId === "bronze") setBronzeOpen(true);
+            }}
+          />
+
           <TokenBalance balance={stats.crediTokens} earned={240} />
           <div className="md:col-span-2 lg:col-span-1">
-            <TransactionList 
-              transactions={transactions} 
+            <TransactionList
+              transactions={transactions}
               onAddTransaction={() => setDialogOpen(true)}
             />
           </div>
@@ -340,19 +306,30 @@ const Index = () => {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 mb-6">
-          <LocalMarketplace 
+          <LocalMarketplace
             benefits={localBenefits}
             formalTransactions={stats.formalTransactions}
             onClaimBenefit={handleClaimBenefit}
           />
-          <CryptoEducation 
+          <CryptoEducation
             lessons={cryptoLessons}
             onStartLesson={handleStartLesson}
           />
         </div>
       </main>
 
-      <TransactionDialog 
+      {/* === POPUPS === */}
+      <BronzeChecklistDialog
+        open={bronzeOpen}
+        onOpenChange={setBronzeOpen}
+        formalTransactions={stats.formalTransactions}
+        creditScore={stats.creditScore}
+        savingsRate={stats.savingsRate}
+        completedLessons={cryptoLessons.filter(l => l.completed).length}
+        totalTransactions={stats.totalTransactions}
+      />
+
+      <TransactionDialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         onSubmit={handleAddTransaction}
