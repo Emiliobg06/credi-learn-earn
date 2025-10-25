@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Wallet, TrendingUp } from "lucide-react";
+import { Wallet, TrendingUp, Presentation } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { ScoreCard } from "@/components/ScoreCard";
 import { TokenBalance } from "@/components/TokenBalance";
 import { TransactionList } from "@/components/TransactionList";
 import { BadgesSection } from "@/components/BadgesSection";
-
 import { TransactionDialog } from "@/components/TransactionDialog";
 import { LocalMarketplace } from "@/components/LocalMarketplace";
 import { CryptoEducation } from "@/components/CryptoEducation";
@@ -13,6 +14,7 @@ import type { Transaction, Badge, UserStats, LocalBenefit, CryptoLesson } from "
 
 const Index = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = useState(false);
   
   const [stats, setStats] = useState<UserStats>({
@@ -302,6 +304,15 @@ const Index = () => {
               <h1 className="text-xl font-bold text-foreground">CrediLearn</h1>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate("/pitch")}
+                className="gap-2"
+              >
+                <Presentation className="h-4 w-4" />
+                Ver Pitch
+              </Button>
               <div className="flex items-center gap-1">
                 <TrendingUp className="h-4 w-4" />
                 <span>{stats.totalTransactions} transacciones</span>
