@@ -6,8 +6,10 @@ import { TransactionList } from "@/components/TransactionList";
 import { BadgesSection } from "@/components/BadgesSection";
 import { AIRecommendations } from "@/components/AIRecommendations";
 import { TransactionDialog } from "@/components/TransactionDialog";
+import { LocalMarketplace } from "@/components/LocalMarketplace";
+import { CryptoEducation } from "@/components/CryptoEducation";
 import { useToast } from "@/hooks/use-toast";
-import type { Transaction, Badge, AIRecommendation, UserStats } from "@/types";
+import type { Transaction, Badge, AIRecommendation, UserStats, LocalBenefit, CryptoLesson } from "@/types";
 
 const Index = () => {
   const { toast } = useToast();
@@ -18,7 +20,8 @@ const Index = () => {
     crediTokens: 2450,
     totalTransactions: 87,
     savingsRate: 15,
-    monthlyProgress: 12
+    monthlyProgress: 12,
+    formalTransactions: 5
   });
 
   const [transactions, setTransactions] = useState<Transaction[]>([
@@ -120,30 +123,130 @@ const Index = () => {
     }
   ];
 
+  const [localBenefits, setLocalBenefits] = useState<LocalBenefit[]>([
+    {
+      id: '1',
+      businessName: 'Café Blockchain',
+      category: 'cafe',
+      discount: 15,
+      description: 'Descuento en café y snacks. Ambiente perfecto para trabajar.',
+      icon: '☕',
+      requiredFormalTransactions: 3,
+      unlocked: true,
+      location: 'Centro, Calle Principal 123'
+    },
+    {
+      id: '2',
+      businessName: 'CoWork Crypto',
+      category: 'coworking',
+      discount: 20,
+      description: 'Espacio de coworking con internet de alta velocidad.',
+      icon: '💼',
+      requiredFormalTransactions: 10,
+      unlocked: false,
+      location: 'Zona Financiera, Av. Innovación 456'
+    },
+    {
+      id: '3',
+      businessName: 'Taller DeFi',
+      category: 'taller',
+      discount: 25,
+      description: 'Talleres presenciales de finanzas descentralizadas.',
+      icon: '🎓',
+      requiredFormalTransactions: 5,
+      unlocked: true,
+      location: 'Universidad Tecnológica, Campus Norte'
+    },
+    {
+      id: '4',
+      businessName: 'Restaurante Digital',
+      category: 'restaurante',
+      discount: 10,
+      description: 'Comida saludable con pago en cripto aceptado.',
+      icon: '🍽️',
+      requiredFormalTransactions: 7,
+      unlocked: false,
+      location: 'Plaza Comercial, Local 789'
+    }
+  ]);
+
+  const [cryptoLessons, setCryptoLessons] = useState<CryptoLesson[]>([
+    {
+      id: '1',
+      title: 'Introducción a Blockchain',
+      description: 'Aprende los conceptos básicos de blockchain y criptomonedas.',
+      difficulty: 'beginner',
+      duration: 15,
+      completed: true,
+      rewardTokens: 100,
+      icon: '🔗'
+    },
+    {
+      id: '2',
+      title: 'Carteras Digitales',
+      description: 'Cómo crear y gestionar tu primera wallet de manera segura.',
+      difficulty: 'beginner',
+      duration: 20,
+      completed: true,
+      rewardTokens: 150,
+      icon: '👛'
+    },
+    {
+      id: '3',
+      title: 'Smart Contracts Básicos',
+      description: 'Entiende cómo funcionan los contratos inteligentes.',
+      difficulty: 'intermediate',
+      duration: 30,
+      completed: false,
+      rewardTokens: 200,
+      icon: '📄'
+    },
+    {
+      id: '4',
+      title: 'DeFi y Finanzas Descentralizadas',
+      description: 'Explora el mundo de las finanzas sin intermediarios.',
+      difficulty: 'intermediate',
+      duration: 25,
+      completed: false,
+      rewardTokens: 250,
+      icon: '🏦'
+    },
+    {
+      id: '5',
+      title: 'Trading y Análisis Técnico',
+      description: 'Estrategias avanzadas para operar en mercados cripto.',
+      difficulty: 'advanced',
+      duration: 45,
+      completed: false,
+      rewardTokens: 300,
+      icon: '📊'
+    }
+  ]);
+
   const recommendations: AIRecommendation[] = [
     {
       id: '1',
+      title: 'Formaliza más transacciones',
+      description: 'Tienes 5 transacciones formales. Al llegar a 10, desbloquearás el cupón de CoWork Crypto con 20% de descuento.',
+      priority: 'high',
+      category: 'Formalización',
+      potentialImpact: 20
+    },
+    {
+      id: '2',
       title: 'Reduce gastos en entretenimiento',
       description: 'Has gastado 20% más que el mes pasado en entretenimiento. Reducir $100 este mes podría mejorar tu score.',
-      priority: 'high',
+      priority: 'medium',
       category: 'Gastos',
       potentialImpact: 15
     },
     {
-      id: '2',
-      title: 'Aumenta tu ahorro mensual',
-      description: 'Con tu ingreso actual, podrías ahorrar 5% más sin afectar tu estilo de vida.',
-      priority: 'medium',
-      category: 'Ahorro',
-      potentialImpact: 25
-    },
-    {
       id: '3',
-      title: 'Excelente manejo de pagos',
-      description: 'Has pagado todos tus servicios a tiempo. ¡Sigue así para mantener tu score alto!',
-      priority: 'low',
-      category: 'Pagos',
-      potentialImpact: 5
+      title: 'Completa lecciones de cripto',
+      description: 'Completa 3 lecciones más para ganar 750 CrediTokens adicionales.',
+      priority: 'medium',
+      category: 'Educación',
+      potentialImpact: 10
     }
   ];
 
@@ -157,22 +260,61 @@ const Index = () => {
     setTransactions([transaction, ...transactions]);
     
     // Simulate score change and token reward
+    const isFormal = transaction.type === 'income' || transaction.type === 'saving';
     const scoreChange = transaction.type === 'saving' ? 5 : 
                        transaction.type === 'income' ? 3 : -2;
     const tokenReward = transaction.type === 'saving' ? 50 : 
                        transaction.type === 'income' ? 20 : 10;
+    
+    const newFormalCount = isFormal ? stats.formalTransactions + 1 : stats.formalTransactions;
 
     setStats(prev => ({
       ...prev,
       creditScore: Math.min(850, Math.max(300, prev.creditScore + scoreChange)),
       crediTokens: prev.crediTokens + tokenReward,
-      totalTransactions: prev.totalTransactions + 1
+      totalTransactions: prev.totalTransactions + 1,
+      formalTransactions: newFormalCount
     }));
+
+    // Unlock benefits based on formal transactions
+    setLocalBenefits(prev => prev.map(benefit => ({
+      ...benefit,
+      unlocked: benefit.unlocked || newFormalCount >= benefit.requiredFormalTransactions
+    })));
 
     toast({
       title: "¡Transacción agregada!",
-      description: `+${tokenReward} CrediTokens ganados`,
+      description: `+${tokenReward} CrediTokens ganados${isFormal ? ' | Transacción formal registrada' : ''}`,
     });
+  };
+
+  const handleClaimBenefit = (benefitId: string) => {
+    const benefit = localBenefits.find(b => b.id === benefitId);
+    if (benefit && benefit.unlocked) {
+      toast({
+        title: "¡Cupón activado!",
+        description: `${benefit.discount}% de descuento en ${benefit.businessName}`,
+      });
+    }
+  };
+
+  const handleStartLesson = (lessonId: string) => {
+    setCryptoLessons(prev => prev.map(lesson => 
+      lesson.id === lessonId ? { ...lesson, completed: true } : lesson
+    ));
+    
+    const lesson = cryptoLessons.find(l => l.id === lessonId);
+    if (lesson) {
+      setStats(prev => ({
+        ...prev,
+        crediTokens: prev.crediTokens + lesson.rewardTokens
+      }));
+
+      toast({
+        title: "¡Lección completada!",
+        description: `+${lesson.rewardTokens} CrediTokens ganados`,
+      });
+    }
   };
 
   return (
@@ -211,6 +353,18 @@ const Index = () => {
         <div className="grid gap-6 lg:grid-cols-2 mb-6">
           <AIRecommendations recommendations={recommendations} />
           <BadgesSection badges={badges} />
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-2 mb-6">
+          <LocalMarketplace 
+            benefits={localBenefits}
+            formalTransactions={stats.formalTransactions}
+            onClaimBenefit={handleClaimBenefit}
+          />
+          <CryptoEducation 
+            lessons={cryptoLessons}
+            onStartLesson={handleStartLesson}
+          />
         </div>
       </main>
 

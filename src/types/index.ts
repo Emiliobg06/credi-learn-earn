@@ -33,4 +33,29 @@ export interface UserStats {
   totalTransactions: number;
   savingsRate: number;
   monthlyProgress: number;
+  formalTransactions: number;
+}
+
+export interface LocalBenefit {
+  id: string;
+  businessName: string;
+  category: 'cafe' | 'coworking' | 'taller' | 'restaurante' | 'servicios';
+  discount: number;
+  description: string;
+  icon: string;
+  requiredFormalTransactions: number;
+  unlocked: boolean;
+  expiresAt?: Date;
+  location: string;
+}
+
+export interface CryptoLesson {
+  id: string;
+  title: string;
+  description: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  duration: number;
+  completed: boolean;
+  rewardTokens: number;
+  icon: string;
 }
