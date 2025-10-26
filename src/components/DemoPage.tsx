@@ -38,8 +38,8 @@ export const DemoPage = () => {
                 <p className="text-sm text-muted-foreground">RFC: FLOR940123ABC</p>
               </div>
               <div className="flex gap-2">
-                <Badge className="bg-green-100 text-green-800">Verificado</Badge>
-                <Badge className="bg-blue-100 text-blue-800">Nivel Plata</Badge>
+                <Badge variant="static" className="bg-blue-100 text-green-800">Verificado</Badge>
+                <Badge variant="static" className="bg-blue-100 text-blue-800">Nivel Plata</Badge>
               </div>
             </div>
           </CardContent>
@@ -97,7 +97,7 @@ export const DemoPage = () => {
                   <p className="font-medium">{item.action}</p>
                   <p className="text-sm text-muted-foreground">{item.date}</p>
                 </div>
-                <Badge className="bg-green-100 text-green-800">
+                <Badge variant="static" className="bg-green-100 text-green-800">
                   {item.points} puntos
                 </Badge>
               </div>
