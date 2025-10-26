@@ -17,7 +17,7 @@ const Pitch = () => {
     setTutorialCompleted(true);
     toast({
       title: "¡Tutorial completado!",
-      description: "Has sido registrado exitosamente en CrediSense",
+      description: "Has sido registrado exitosamente en TrustCredit",
     });
   };
 
@@ -52,7 +52,7 @@ const Pitch = () => {
                 }}
               />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-[#004977] to-[#da291c] bg-clip-text text-transparent">
-                CrediSense
+                TrustCredit
               </h1>
             </div>
             <div className="w-32" /> {/* Spacer for centering */}
@@ -102,7 +102,7 @@ const Pitch = () => {
               }}
             />
             <span className="text-[#004977] font-semibold">x</span>
-            <span className="font-bold text-[#004977]">CrediSense</span>
+            <span className="font-bold text-[#004977]">TrustCredit</span>
           </div>
           <p className="text-sm text-gray-600">
             Transformando la formalización en México a través de incentivos tangibles

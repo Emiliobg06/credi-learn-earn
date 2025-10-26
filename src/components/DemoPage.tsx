@@ -19,7 +19,7 @@ export const DemoPage = () => {
           <ArrowLeft className="h-4 w-4" />
           Volver al Pitch
         </Button>
-        <h1 className="text-3xl font-bold">Demo en Vivo: CrediSense</h1>
+        <h1 className="text-3xl font-bold">Demo en Vivo: TrustCredit</h1>
       </div>
 
       {/* Demo Dashboard */}

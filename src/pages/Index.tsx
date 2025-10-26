@@ -157,7 +157,7 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 <Wallet className="h-6 w-6 text-[#004977]" />
                 <h1 className="text-xl font-bold bg-gradient-to-r from-[#004977] to-[#da291c] bg-clip-text text-transparent">
-                  CrediSense
+                  TrustCredit
                 </h1>
               </div>
             </div>
