@@ -13,6 +13,13 @@ import { useToast } from "@/hooks/use-toast";
 import BronzeChecklistDialog from "@/components/BronzeChecklistDialog";
 import PymesGateDialog from "@/components/PymesGateDialog";
 import ProgressRing from "@/components/ProgressRing";
+import ScoreBreakdown, { type Subscores, computeWeightedIndex } from "@/components/ScoreBreakdown";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import type { Transaction, Badge, UserStats, LocalBenefit, CryptoLesson } from "@/types";
 
 const Index = () => {
@@ -61,6 +68,17 @@ const Index = () => {
     { id: '2', title: 'Carteras Digitales',        description: 'Cómo crear y gestionar tu primera wallet de manera segura.',   difficulty: 'beginner', duration: 20, completed: true,  rewardTokens: 150, icon: '' },
     { id: '3', title: 'Smart Contracts Básicos',   description: 'Entiende cómo funcionan los contratos inteligentes.',          difficulty: 'intermediate', duration: 30, completed: false, rewardTokens: 200, icon: '' },
   ]);
+
+  // Subscores demo (hardcodeados para la demostración)
+  const demoSubscores: Subscores = {
+    income_stability: 72,
+    spend_to_income: 68,
+    bill_punctuality: 80,
+    savings_liquidity: 60,
+    recurrent_reliability: 55,
+    diversification: 62,
+    risk_behaviour: 70,
+  };
 
   // --------- Progreso para ruedas (lee localStorage si existe) ----------
   const computePymesFallback = useMemo(() => {
@@ -199,6 +217,25 @@ const Index = () => {
               onAddTransaction={() => setDialogOpen(true)}
             />
           </div>
+        </div>
+
+        {/* Desglose del SRF (7 factores) - colapsable */}
+        <div className="mb-6">
+          <Accordion type="single" collapsible defaultValue="srf">
+            <AccordionItem value="srf" className="border rounded-md">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <div className="w-full flex items-center justify-between">
+                  <span className="text-base font-semibold text-foreground">Desglose del SRF (7 factores)</span>
+                  <span className="text-sm text-muted-foreground">
+                    Índice ponderado: <span className="font-medium text-foreground">{computeWeightedIndex(demoSubscores)}/100</span>
+                  </span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="pt-2">
+                <ScoreBreakdown subscores={demoSubscores} showHeader={false} />
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
 
         <div className="mb-6">
