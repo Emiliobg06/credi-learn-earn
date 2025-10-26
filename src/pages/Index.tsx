@@ -49,10 +49,10 @@ const Index = () => {
   ];
 
   const [localBenefits, setLocalBenefits] = useState<LocalBenefit[]>([
-    { id: '1', businessName: 'Café Blockchain',    category: 'cafe',       discount: 15, description: 'Descuento en café y snacks. Ambiente perfecto para trabajar.', icon: '', requiredFormalTransactions: 3,  unlocked: true,  location: 'Centro, Calle Principal 123' },
-    { id: '2', businessName: 'CoWork Crypto',      category: 'coworking',  discount: 20, description: 'Espacio de coworking con internet de alta velocidad.',        icon: '', requiredFormalTransactions: 10, unlocked: false, location: 'Zona Financiera, Av. Innovación 456' },
-    { id: '3', businessName: 'Taller DeFi',        category: 'taller',     discount: 25, description: 'Talleres presenciales de finanzas descentralizadas.',         icon: '', requiredFormalTransactions: 5,  unlocked: true,  location: 'Universidad Tecnológica, Campus Norte' },
-    { id: '4', businessName: 'Restaurante Digital',category: 'restaurante',discount: 10, description: 'Comida saludable con pago en cripto aceptado.',               icon: '', requiredFormalTransactions: 7,  unlocked: false, location: 'Plaza Comercial, Local 789' }
+    { id: '1', businessName: 'Café Iguana',    category: 'cafe',       discount: 15, description: 'Descuento en café y snacks. Ambiente perfecto para trabajar.', icon: '', requiredFormalTransactions: 3,  unlocked: true,  location: 'Centro, Calle Principal 123' },
+    { id: '2', businessName: 'Sigma Alimentos',      category: 'coworking',  discount: 20, description: 'Espacio de trabajo para Sigma con internet y yogurts.',        icon: '', requiredFormalTransactions: 10, unlocked: false, location: 'Zona Financiera, Av. Innovación 456' },
+    { id: '3', businessName: 'Taller A2 Capacitación',        category: 'taller',     discount: 25, description: 'Talleres presenciales de finanzas descentralizadas.',         icon: '', requiredFormalTransactions: 5,  unlocked: true,  location: 'Universidad Tecnológica, Campus Norte' },
+    { id: '4', businessName: 'Tacos Dany',category: 'restaurante',discount: 10, description: 'Comida saludable con pago en cripto aceptado.',               icon: '', requiredFormalTransactions: 7,  unlocked: false, location: 'Plaza Comercial, Local 789' }
   ]);
 
   // Mantengo cryptoLessons SOLO para el popup de Bronce (completedLessons)

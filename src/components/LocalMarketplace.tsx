@@ -38,7 +38,7 @@ export const LocalMarketplace = ({ benefits, formalTransactions, onClaimBenefit 
         <div>
           <h2 className="text-xl font-bold text-foreground">Beneficios Locales</h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Transacciones formales: {formalTransactions}
+            Creditokens: {formalTransactions}
           </p>
         </div>
         <div className="text-right">
@@ -106,7 +106,7 @@ export const LocalMarketplace = ({ benefits, formalTransactions, onClaimBenefit 
                     <div className="text-right">
                       <p className="text-xs text-muted-foreground">Requiere</p>
                       <p className="text-sm font-semibold text-foreground">
-                        {benefit.requiredFormalTransactions} formales
+                        {benefit.requiredFormalTransactions} creditokens
                       </p>
                     </div>
                   )}
