@@ -35,7 +35,7 @@ interface Step {
 const tutorialSteps: Step[] = [
   {
     id: 1,
-    title: "Bienvenido a CrediSense",
+    title: "Bienvenido a TrustCredit",
     description: "Te ayudaremos a formalizar tu negocio paso a paso, ganando beneficios en cada etapa.",
     icon: Sparkles,
     question: "¿Ya tienes tu negocio registrado en el SAT?",
@@ -86,7 +86,7 @@ const tutorialSteps: Step[] = [
       { value: "manual", label: "Solo facturas en papel", info: "Te ayudaremos a digitalizar" },
       { value: "no", label: "No emito facturas", info: "Te enseñaremos cómo hacerlo fácilmente" }
     ],
-    tip: "La facturación electrónica es obligatoria y te da acceso a más beneficios en CrediSense"
+    tip: "La facturación electrónica es obligatoria y te da acceso a más beneficios en TrustCredit"
   },
   {
     id: 5,
@@ -116,7 +116,7 @@ const tutorialSteps: Step[] = [
     title: "¡Todo Listo!",
     description: "Has completado tu perfil inicial",
     icon: Award,
-    tip: "Ahora puedes comenzar a usar CrediSense y ganar recompensas"
+    tip: "Ahora puedes comenzar a usar TrustCredit y ganar recompensas"
   }
 ];
 
@@ -189,7 +189,7 @@ export const OnboardingTutorial = ({ onComplete, onSkip }: OnboardingTutorialPro
             }}
           />
           <span className="text-2xl font-bold bg-gradient-to-r from-[#004977] to-[#da291c] bg-clip-text text-transparent">
-            CrediSense
+            TrustCredit
           </span>
         </div>
         <Button variant="ghost" onClick={onSkip} className="text-[#004977]">

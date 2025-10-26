@@ -46,7 +46,7 @@ const timelineSteps = [
     color: "bg-yellow-500",
     benefits: [
       { name: "CrediPoints", desc: "Equivalen a descuentos o créditos en el ecosistema" },
-      { name: "Exposición gratuita", desc: "Aparece en el marketplace de CrediSense" },
+      { name: "Exposición gratuita", desc: "Aparece en el marketplace de TrustCredit" },
       { name: "Comunidad consciente", desc: "Consumidores que prefieren negocios formales" }
     ],
     example: "Juan formaliza su florería → 10,000 usuarios lo ven → obtiene pedidos + puntos → canjea por insumos"
@@ -58,7 +58,7 @@ const timelineSteps = [
     benefits: [
       { name: "Microcréditos preaprobados", desc: "Basados en tu score de confianza" },
       { name: "Recompensas de aliados", desc: "Descuentos en software contable, asesorías" },
-      { name: "Certificaciones", desc: "Negocio verificado por CrediSense" }
+      { name: "Certificaciones", desc: "Negocio verificado por TrustCredit" }
     ],
     example: "Con 50 transacciones formales, accedes a microcrédito de $10,000 MXN sin trámites bancarios"
   },
@@ -117,7 +117,7 @@ export const PitchPresentation = () => {
           />
         </div>
         <h1 className="text-5xl font-bold tracking-tight">
-          CrediSense
+          TrustCredit
         </h1>
         <p className="text-xl font-light max-w-3xl mx-auto">
           Powered by Capital One
@@ -179,7 +179,7 @@ export const PitchPresentation = () => {
             La Solución: Invertir la Ecuación
           </CardTitle>
           <CardDescription className="text-lg">
-            CrediSense hace que formalizarte traiga beneficios inmediatos y progresivos
+            TrustCredit hace que formalizarte traiga beneficios inmediatos y progresivos
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -434,7 +434,7 @@ export const PitchPresentation = () => {
                   <div className="flex-1">
                     <p className="font-semibold text-lg">Exposición en Marketplace</p>
                     <p className="text-muted-foreground">
-                      Su florería aparece en el marketplace de CrediSense con 10,000 usuarios activos
+                      Su florería aparece en el marketplace de TrustCredit con 10,000 usuarios activos
                     </p>
                     <Badge className="mt-2 bg-blue-100 text-blue-800">Visibilidad Gratuita</Badge>
                   </div>
@@ -511,7 +511,7 @@ export const PitchPresentation = () => {
         </CardHeader>
         <CardContent className="space-y-6">
           <p className="text-xl text-center font-medium text-gray-700">
-            Con CrediSense, cada paso hacia la formalidad genera beneficios inmediatos:
+            Con TrustCredit, cada paso hacia la formalidad genera beneficios inmediatos:
             puntos, clientes, reputación y acceso a herramientas financieras.
           </p>
           <div className="bg-white p-6 rounded-lg shadow-lg border-2 border-[#da291c]">
