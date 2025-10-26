@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "scripts": {
+    "seed": "node seed.js",
+    "score": "node score.js",
+    "score:one": "node score.js $ID",
+    "serve": "node api.js"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.18",
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2"
+  }
+}
