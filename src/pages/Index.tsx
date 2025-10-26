@@ -141,20 +141,38 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card shadow-sm">
+      <header className="border-b border-[#004977]/20 bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Wallet className="h-6 w-6 text-primary" />
-              <h1 className="text-xl font-bold text-foreground">CrediLearn</h1>
+            <div className="flex items-center gap-4">
+              <img
+                src="/images/capital-one-logo.png"
+                alt="Capital One"
+                className="h-8 object-contain"
+                onError={(e) => {
+                  e.currentTarget.src = "https://logos-world.net/wp-content/uploads/2021/02/Capital-One-Logo.png";
+                }}
+              />
+              <div className="h-6 w-px bg-gray-300" />
+              <div className="flex items-center gap-2">
+                <Wallet className="h-6 w-6 text-[#004977]" />
+                <h1 className="text-xl font-bold bg-gradient-to-r from-[#004977] to-[#da291c] bg-clip-text text-transparent">
+                  CrediSense
+                </h1>
+              </div>
             </div>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <Button variant="outline" size="sm" onClick={() => navigate("/pitch")} className="gap-2">
+            <div className="flex items-center gap-4 text-sm text-gray-600">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate("/pitch")}
+                className="gap-2 border-[#004977] text-[#004977] hover:bg-[#004977] hover:text-white transition-all"
+              >
                 <Presentation className="h-4 w-4" />
                 Ver Pitch
               </Button>
               <div className="flex items-center gap-1">
-                <TrendingUp className="h-4 w-4" />
+                <TrendingUp className="h-4 w-4 text-[#da291c]" />
                 <span>{stats.totalTransactions} transacciones</span>
               </div>
             </div>

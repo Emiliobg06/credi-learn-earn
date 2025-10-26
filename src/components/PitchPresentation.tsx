@@ -105,22 +105,32 @@ export const PitchPresentation = () => {
   return (
     <div className="w-full max-w-7xl mx-auto p-6 space-y-8">
       {/* Hero Section */}
-      <div className="text-center space-y-4 py-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl text-white p-12">
+      <div className="text-center space-y-4 py-8 bg-gradient-to-r from-[#004977] via-[#00447c] to-[#da291c] rounded-2xl text-white p-12 shadow-2xl">
         <div className="flex justify-center mb-4">
-          <Rocket className="h-16 w-16 animate-bounce" />
+          <img
+            src="/images/capital-one-logo.png"
+            alt="Capital One"
+            className="h-16 object-contain mb-2 brightness-0 invert"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
         </div>
         <h1 className="text-5xl font-bold tracking-tight">
           CrediSense
         </h1>
+        <p className="text-xl font-light max-w-3xl mx-auto">
+          Powered by Capital One
+        </p>
         <p className="text-2xl font-light max-w-3xl mx-auto">
           Transformando la formalización en México desde una carga a una oportunidad de crecimiento
         </p>
-        <div className="flex justify-center gap-4 mt-6">
-          <Badge className="text-lg px-6 py-2 bg-white text-purple-600">
+        <div className="flex justify-center gap-4 mt-6 flex-wrap">
+          <Badge className="text-lg px-6 py-2 bg-white text-[#004977] hover:bg-white/90">
             <Users className="h-5 w-5 mr-2" />
             10,000+ microempresas potenciales
           </Badge>
-          <Badge className="text-lg px-6 py-2 bg-white text-purple-600">
+          <Badge className="text-lg px-6 py-2 bg-white text-[#da291c] hover:bg-white/90">
             <TrendingUp className="h-5 w-5 mr-2" />
             $200M+ MXN en valor económico
           </Badge>
@@ -493,25 +503,25 @@ export const PitchPresentation = () => {
       </Tabs>
 
       {/* Key Message */}
-      <Card className="border-4 border-blue-600 bg-gradient-to-br from-blue-50 to-purple-50">
+      <Card className="border-4 border-[#004977] bg-gradient-to-br from-[#004977]/5 to-[#da291c]/5">
         <CardHeader>
-          <CardTitle className="text-3xl text-center">
+          <CardTitle className="text-3xl text-center text-[#004977]">
             La Formalización Ya No Es un Castigo
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <p className="text-xl text-center font-medium">
+          <p className="text-xl text-center font-medium text-gray-700">
             Con CrediSense, cada paso hacia la formalidad genera beneficios inmediatos:
             puntos, clientes, reputación y acceso a herramientas financieras.
           </p>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <p className="text-2xl font-bold text-center text-blue-900">
+          <div className="bg-white p-6 rounded-lg shadow-lg border-2 border-[#da291c]">
+            <p className="text-2xl font-bold text-center text-[#004977]">
               Las pymes dejan de ver la formalización como una obligación,
               y la ven como una oportunidad de crecimiento y confianza.
             </p>
           </div>
           <div className="flex justify-center gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg px-8" onClick={() => navigate('/demo')}>
+            <Button size="lg" className="bg-gradient-to-r from-[#004977] to-[#da291c] hover:opacity-90 text-white text-lg px-8" onClick={() => navigate('/demo')}>
               Ver Demo en Vivo
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

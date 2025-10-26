@@ -1,14 +1,16 @@
 <div align="center">
 
 # 🚀 CrediSense
+### Powered by Capital One
 
 ### Transformando la Formalización en México
 ### De una Carga a una Oportunidad de Crecimiento
 
 [![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://lovable.dev/projects/566681cf-371a-4a92-be6c-5a37c94c67bd)
+[![Capital One](https://img.shields.io/badge/Powered_by-Capital_One-004977?logo=capitalone)](https://www.capitalone.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
-[![Hackathon 2025](https://img.shields.io/badge/Hackathon-2025-purple)](https://github.com)
+[![Hackathon 2025](https://img.shields.io/badge/Hackathon-2025-da291c)](https://github.com)
 
 </div>
 
@@ -161,12 +163,14 @@ graph LR
 ### [🎥 Ver Presentación Interactiva](https://lovable.dev/projects/566681cf-371a-4a92-be6c-5a37c94c67bd)
 
 La demo incluye:
+- ✅ **Tutorial interactivo** - Onboarding paso a paso con preguntas sobre RFC, SAT, facturación
 - ✅ Dashboard interactivo con score dinámico
 - ✅ Sistema de transacciones y recompensas
 - ✅ Marketplace de beneficios locales
 - ✅ Módulo de educación financiera
 - ✅ Visualización de progreso gamificado
 - ✅ **Presentación de pitch completa** en `/pitch`
+- ✅ **Branding de Capital One** - Logo y colores corporativos integrados
 
 ---
 
